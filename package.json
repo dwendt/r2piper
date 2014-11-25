@@ -1,0 +1,27 @@
+{
+  "name": "r2piper",
+  "version": "0.0.0",
+  "description": "Provides a native JS API to manage r2pipe.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dwendt/r2piper.git"
+  },
+  "keywords": [
+    "radare",
+    "r2",
+    "r2pipe"
+  ],
+  "author": "Ditmar Wendt",
+  "license": "GPLv2",
+  "bugs": {
+    "url": "https://github.com/dwendt/r2piper/issues"
+  },
+  "homepage": "https://github.com/dwendt/r2piper",
+  "dependencies": {
+    "r2pipe": "^0.1.1"
+  }
+}
