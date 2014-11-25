@@ -1,6 +1,6 @@
 {
   "name": "r2piper",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Provides a native JS API to manage r2pipe.",
   "main": "index.js",
   "scripts": {
