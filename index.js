@@ -81,7 +81,6 @@ var r2piper = {
       pipe.cmd("pi @b:" + bytes + off, cb);
     });
   }
-
 };
 
 module.exports = r2piper;

@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/dwendt/r2piper",
   "dependencies": {
-    "r2pipe": "^0.1.1"
+    "r2pipe": "^0.1.1",
+    "underscore": "^1.7.0"
   }
 }
