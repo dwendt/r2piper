@@ -15,6 +15,9 @@ var r2piper = {
       if (r2) {
         var pipeRef = activePipes.length;
         activePipes.push(r2);
+
+        // TODO: seems after we add we should do "af" automatically
+
         cb(null, pipeRef);
       } else {
         cb("Failed to create pipe.");
@@ -69,6 +72,8 @@ var r2piper = {
     var off = offset ? "@" + offset : '';
 
     get(ref, function(err, pipe) {
+      if(err) return cb(err);
+
       pipe.cmd("pD " + length + off, cb);
     });
   },
@@ -78,9 +83,41 @@ var r2piper = {
     var off = offset ? "@" + offset : '';
 
     get(ref, function(err, pipe) {
+      if(err) return cb(err);
+
       pipe.cmd("pi @b:" + bytes + off, cb);
     });
+  },
+  // Uses a combo of instructions to get segment info in js obj format.
+  // cb(err, object of segment inf)
+  sections: function(ref, cb) {
+    get(ref, function(err, pipe) {
+      if(err) cb(err);
+
+      pipe.cmdj("Sj", cb);
+    });
+  },
+  // cb(err, obj) ex: obj.strings[0].string, type, size, length, paddr, vaddr
+  strings: function(ref, cb) {
+    get(ref, function(err, pipe) {
+      if(err) cb(err);
+
+      pipe.cmdj("izz", function(dat) {
+        cb(dat.strings);
+      });
+    });
+  },
+
+  xrefs: function(ref, sym, cb) {
+    get(ref, function(err, pipe) {
+      if(err) cb(err);
+
+      var search = sym; // todo: escape
+      pipe.cmdj("axt @"+search, cb);
+    });
   }
+
+
 };
 
 module.exports = r2piper;
